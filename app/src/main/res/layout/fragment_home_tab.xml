@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_tab_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeTab">
+
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        mapbox:mapbox_cameraTargetLat="30.6280"
+        mapbox:mapbox_cameraTargetLng="-96.3344"
+        mapbox:mapbox_styleUrl="mapbox://styles/mapbox/streets-v10"
+        mapbox:mapbox_cameraZoom="12" >
+
+    </com.mapbox.mapboxsdk.maps.MapView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/location_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_menu_mylocation"
+        android:alpha="0.8"
+        mapbox:backgroundTint="@color/cardview_dark_background"
+        mapbox:layout_constraintBottom_toBottomOf="parent"
+        mapbox:layout_constraintEnd_toEndOf="parent" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/navigation_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:enabled="false"
+        android:focusable="false"
+        android:src="@drawable/ic_navigation"
+        android:alpha="0.8"
+        android:visibility="gone"
+        mapbox:backgroundTint="@color/cardview_dark_background"
+        mapbox:layout_constraintBottom_toBottomOf="@+id/location_button"
+        mapbox:layout_constraintEnd_toStartOf="@+id/location_button" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/route1_button_holder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        mapbox:layout_constraintBottom_toTopOf="@+id/location_button"
+        mapbox:layout_constraintEnd_toEndOf="@+id/location_button">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/route1_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.8"
+            android:clickable="true"
+            android:src="@android:color/transparent"
+            mapbox:backgroundTint="@color/cardview_dark_background"
+            mapbox:layout_constraintBottom_toBottomOf="parent"
+            mapbox:layout_constraintEnd_toEndOf="parent"
+            mapbox:layout_constraintStart_toStartOf="parent"
+            mapbox:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/route1_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            mapbox:layout_constraintBottom_toBottomOf="@+id/route1_button"
+            mapbox:layout_constraintEnd_toEndOf="@+id/route1_button"
+            mapbox:layout_constraintStart_toStartOf="@+id/route1_button"
+            mapbox:layout_constraintTop_toTopOf="@+id/route1_button" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/route2_button_holder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        mapbox:layout_constraintBottom_toTopOf="@+id/route1_button_holder"
+        mapbox:layout_constraintEnd_toEndOf="@+id/route1_button_holder">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/route2_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.8"
+            android:clickable="true"
+            android:src="@android:color/transparent"
+            mapbox:backgroundTint="@color/cardview_dark_background"
+            mapbox:layout_constraintBottom_toBottomOf="parent"
+            mapbox:layout_constraintEnd_toEndOf="parent"
+            mapbox:layout_constraintStart_toStartOf="parent"
+            mapbox:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/route2_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            mapbox:layout_constraintBottom_toBottomOf="@+id/route2_button"
+            mapbox:layout_constraintEnd_toEndOf="@+id/route2_button"
+            mapbox:layout_constraintStart_toStartOf="@+id/route2_button"
+            mapbox:layout_constraintTop_toTopOf="@+id/route2_button" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/place_autocomplete_fragment_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:alpha="0.8"
+        android:background="@color/white"
+        mapbox:layout_constraintEnd_toEndOf="parent"
+        mapbox:layout_constraintStart_toStartOf="parent"
+        mapbox:layout_constraintTop_toTopOf="parent">
+
+        <fragment
+            android:id="@+id/place_autocomplete_fragment"
+            android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

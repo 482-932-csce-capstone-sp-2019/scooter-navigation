@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <PreferenceCategory
+        android:title="Connectivity">
+        <PreferenceScreen
+            android:key="bluetooth_screen"
+            android:title="Bluetooth"
+            android:persistent="false">
+
+        </PreferenceScreen>
+        <Preference android:key="bluetooth_test"
+                    android:title="Send Bluetooth Test String"
+                    android:persistent="false"></Preference>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Device">
+        <tactilebike.cse.tamu.edu.tactilebike.SeekBarPreference android:title="Vibration Strength" android:enabled="false"></tactilebike.cse.tamu.edu.tactilebike.SeekBarPreference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Navigation Options">
+        <SwitchPreference
+            android:key="simulate_route"
+            android:title="Simulate route"/>
+        <EditTextPreference
+            android:key="turn_approaching_distance"
+            android:title="Turn approaching distance (meters)"
+            android:inputType="number"
+            android:defaultValue="150"/>
+        <EditTextPreference
+            android:key="turn_now_distance"
+            android:title="Turn now distance (meters)"
+            android:inputType="number"
+            android:defaultValue="10" />
+    </PreferenceCategory>
+</PreferenceScreen>
