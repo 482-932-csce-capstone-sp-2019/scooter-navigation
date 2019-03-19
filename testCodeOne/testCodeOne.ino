@@ -1,3 +1,6 @@
+//currently vibration motors should be attached to analog 0-1-2
+
+//=================CONSTANTS=======================//
 int state = 0;
 const int POWER = 255;
 
@@ -5,31 +8,21 @@ const int POWER = 255;
 const int RIGHT = 1;
 const int LEFT = 0;
 
+//these constants determine the number of motors and power to supply for vibration patterns
+const int lowNumMotors = 1;
+const int mediumNumMotors = 2;
+const int highNumMotors = 3;
+const int lowIntensity = POWER;
+const int mediumIntensity = POWER;
+const int highIntensity = POWER;
+
+//=================================================//
+
+
 // the setup function runs once when you press reset or power the board
 void setup() 
 {
-  // initialize digital pin LED_BUILTIN as an output.
-  pinMode(LED_BUILTIN, OUTPUT);
-  // vibration motors are ordered from pin 12-9 for left handlebar in order with 12 furthest left
-  pinMode(10, OUTPUT);
-  pinMode(9, OUTPUT);
-  // vibration motors are ordered from pin 7-4 for right handlebar in order with 4 furthest right
-  pinMode(6, OUTPUT);
-  pinMode(5, OUTPUT);
-  /*        LEFT HANDLEBAR                     RIGHT HANDLEBAR
-   *        11  10  9   8                        7  6  5  4
-   *        L1  L2  L3  L4                       R1 R2 R3 R4
-   */
-   // initialize pin for speaker
-   pinMode(12, OUTPUT);
-   // initialize pins for lights
-   pinMode(4, OUTPUT);
-   pinMode(7, OUTPUT);
-   pinMode(8, OUTPUT);
-   // turn red light on to show device is on
-   //rl_on();
-   //beep();
-   Serial.begin(9600); // Default connection for BT module
+  
 }
 
 // the loop function runs over and over again forever
@@ -42,57 +35,57 @@ void loop() {
     //===============RIGHT===============//
     //low
     if (state == '0') {
-      signalRight(-1,-1);
+      signalRight(lowIntensity,lowNumMotors);
       Serial.println("right low");
     }
 
     //medium
     if (state == 'r') {
-      signalRight(-1,-1);
+      signalRight(mediumIntensity,mediumNumMotors);
       Serial.println("right medium");
     }
 
     //high
     if (state == 'R') {
-      signalRight(-1,-1);
+      signalRight(highIntensity,highNumMotors);
       Serial.println("right high");
     }
 
     //===============LEFT================//
     //low
     if (state == '1') {
-      signalRight(-1,-1);
+      signalRight(lowIntensity,lowNumMotors);
       Serial.println("left low");
     }
 
     //medium
     if (state == 'l') {
-      signalRight(-1,-1);
+      signalRight(mediumIntensity,mediumNumMotors);
       Serial.println("left medium");
     }
 
     //high
     if (state == 'L') {
-      signalRight(-1,-1);
+      signalRight(highIntensity,highNumMotors);
       Serial.println("left high");
     }
 
     //===============UTURN===============//
     //low
     if (state == '2') {
-      signalRight(-1,-1);
+      signalRight(lowIntensity,lowNumMotors);
       Serial.println("uturn low");
     }
 
     //medium
     if (state == 'u') {
-      signalRight(-1,-1);
+      signalRight(mediumIntensity,mediumNumMotors);
       Serial.println("uturn medium");
     }
 
     //high
     if (state == 'U') {
-      signalRight(-1,-1);
+      signalRight(highIntensity,highNumMotors);
       Serial.println("uturn high");
     }
   }
@@ -100,16 +93,22 @@ void loop() {
 
 void signalRight(int intensity, int numberMotors){
   if(RIGHT){  //only the RIGHT band should do this
-    
+    for(int i = 0; i < numberMotors; i++){
+      analogWrite(i, intensity);
+    }
   }
 }
 
 void signalLeft(int intensity, int numberMotors){
   if(LEFT){ //only the LEFT band should do this
-    
+    for(int i = 0; i < numberMotors; i++){
+      analogWrite(i, intensity);
+    }
   }
 }
 
 void uturn(int intensity, int numberMotors){
-
+  for(int i = 0; i < numberMotors; i++){
+      analogWrite(i, intensity);
+    }
 }
