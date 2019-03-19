@@ -38,11 +38,62 @@ void loop() {
     state = Serial.read(); //gets character from buffer
     //rl_off();
     //gl_on(); //Shows that device has connected
-    
-    //right();
+
+    //===============RIGHT===============//
+    //low
     if (state == '0') {
-      //right();
-      Serial.println("Right Turn");
+      signalRight(-1,-1);
+      Serial.println("right low");
+    }
+
+    //medium
+    if (state == 'r') {
+      signalRight(-1,-1);
+      Serial.println("right medium");
+    }
+
+    //high
+    if (state == 'R') {
+      signalRight(-1,-1);
+      Serial.println("right high");
+    }
+
+    //===============LEFT================//
+    //low
+    if (state == '1') {
+      signalRight(-1,-1);
+      Serial.println("left low");
+    }
+
+    //medium
+    if (state == 'l') {
+      signalRight(-1,-1);
+      Serial.println("left medium");
+    }
+
+    //high
+    if (state == 'L') {
+      signalRight(-1,-1);
+      Serial.println("left high");
+    }
+
+    //===============UTURN===============//
+    //low
+    if (state == '2') {
+      signalRight(-1,-1);
+      Serial.println("uturn low");
+    }
+
+    //medium
+    if (state == 'u') {
+      signalRight(-1,-1);
+      Serial.println("uturn medium");
+    }
+
+    //high
+    if (state == 'U') {
+      signalRight(-1,-1);
+      Serial.println("uturn high");
     }
   }
 }
@@ -60,4 +111,5 @@ void signalLeft(int intensity, int numberMotors){
 }
 
 void uturn(int intensity, int numberMotors){
+
 }
