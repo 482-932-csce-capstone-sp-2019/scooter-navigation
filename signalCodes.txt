@@ -1,0 +1,18 @@
+Character Signal Codes
+
+
+
+RIGHT
+0 - lowest intensity
+r - medium intensity
+R - highest intensity
+
+LEFT
+1 - lowest intensity
+l - medium intensity
+L - highest intensity
+
+UTURN
+2 - lowest intensity
+u - medium intensity
+U - highest intensity
