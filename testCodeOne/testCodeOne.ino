@@ -1,3 +1,6 @@
+//currently vibration motors should be attached to analog 0-1-2
+
+//=================CONSTANTS=======================//
 int state = 0;
 const int POWER = 255;
 
@@ -5,7 +8,16 @@ const int POWER = 255;
 const int RIGHT = 1;
 const int LEFT = 0;
 
-//currently vibration motors should be attached to analog 0-1-2
+//these constants determine the number of motors and power to supply for vibration patterns
+const int lowNumMotors = 1;
+const int mediumNumMotors = 2;
+const int highNumMotors = 3;
+const int lowIntensity = POWER;
+const int mediumIntensity = POWER;
+const int highIntensity = POWER;
+
+//=================================================//
+
 
 // the setup function runs once when you press reset or power the board
 void setup() 
@@ -23,57 +35,57 @@ void loop() {
     //===============RIGHT===============//
     //low
     if (state == '0') {
-      signalRight(-1,-1);
+      signalRight(lowIntensity,lowNumMotors);
       Serial.println("right low");
     }
 
     //medium
     if (state == 'r') {
-      signalRight(-1,-1);
+      signalRight(mediumIntensity,mediumNumMotors);
       Serial.println("right medium");
     }
 
     //high
     if (state == 'R') {
-      signalRight(-1,-1);
+      signalRight(highIntensity,highNumMotors);
       Serial.println("right high");
     }
 
     //===============LEFT================//
     //low
     if (state == '1') {
-      signalRight(-1,-1);
+      signalRight(lowIntensity,lowNumMotors);
       Serial.println("left low");
     }
 
     //medium
     if (state == 'l') {
-      signalRight(-1,-1);
+      signalRight(mediumIntensity,mediumNumMotors);
       Serial.println("left medium");
     }
 
     //high
     if (state == 'L') {
-      signalRight(-1,-1);
+      signalRight(highIntensity,highNumMotors);
       Serial.println("left high");
     }
 
     //===============UTURN===============//
     //low
     if (state == '2') {
-      signalRight(-1,-1);
+      signalRight(lowIntensity,lowNumMotors);
       Serial.println("uturn low");
     }
 
     //medium
     if (state == 'u') {
-      signalRight(-1,-1);
+      signalRight(mediumIntensity,mediumNumMotors);
       Serial.println("uturn medium");
     }
 
     //high
     if (state == 'U') {
-      signalRight(-1,-1);
+      signalRight(highIntensity,highNumMotors);
       Serial.println("uturn high");
     }
   }
