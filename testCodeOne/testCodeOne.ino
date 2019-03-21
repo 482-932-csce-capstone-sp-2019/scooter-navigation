@@ -1,4 +1,13 @@
+//=====================NOTES=======================//
+//do i need pull up/down resistors for anything?
+//do i need low power LED? is that what the L LED is for? 
+
+//=================HARDWARE========================//
 //currently vibration motors should be attached to analog 0-1-2
+//  need to check to make sure the motors are correctly positions so they turn on from inside to outside
+//Bluetooth LED on digital 2
+//Low battery LED on digital 3
+//test LED on digital 4
 
 //=================CONSTANTS=======================//
 int state = 0;
@@ -14,7 +23,7 @@ const int mediumNumMotors = 2;
 const int highNumMotors = 3;
 const int lowIntensity = POWER;
 const int mediumIntensity = POWER;
-const int highIntensity = POWER;
+const int highIntensity = POWER; //can also do digitalWrite(A0, HIGH);
 
 //=================================================//
 
@@ -22,15 +31,29 @@ const int highIntensity = POWER;
 // the setup function runs once when you press reset or power the board
 void setup() 
 {
-  
+  //vibration motors
+  pinMode(A0,OUTPUT);
+  pinMode(A1,OUTPUT);
+  pinMode(A2,OUTPUT);
+  //bluetooth LED
+  pinMode(2,OUTPUT);
+  //low battery LED
+  pinMode(3,OUTPUT);
+
+  //test LED
+  pinMode(4,OUTPUT);
+  digitalWrite(4,HIGH);
+  delay(250);
+  digitalWrite(4,LOW);
+
+  //Default connection for BT module
+  Serial.begin(9600); 
 }
 
 // the loop function runs over and over again forever
 void loop() {
   if (Serial.available() > 0){  //checks if there are characters to read in receive  buffer
     state = Serial.read(); //gets character from buffer
-    //rl_off();
-    //gl_on(); //Shows that device has connected
 
     //===============RIGHT===============//
     //low
@@ -96,6 +119,10 @@ void signalRight(int intensity, int numberMotors){
     for(int i = 0; i < numberMotors; i++){
       analogWrite(i, intensity);
     }
+    delay(125);
+    for(int i = 0; i < numberMotors; i++){
+      analogWrite(i, 0);
+    }
   }
 }
 
@@ -104,11 +131,19 @@ void signalLeft(int intensity, int numberMotors){
     for(int i = 0; i < numberMotors; i++){
       analogWrite(i, intensity);
     }
+    delay(125);
+    for(int i = 0; i < numberMotors; i++){
+      analogWrite(i, 0);
+    }
   }
 }
 
 void uturn(int intensity, int numberMotors){
   for(int i = 0; i < numberMotors; i++){
       analogWrite(i, intensity);
+    }
+    delay(125);
+    for(int i = 0; i < numberMotors; i++){
+      analogWrite(i, 0);
     }
 }
