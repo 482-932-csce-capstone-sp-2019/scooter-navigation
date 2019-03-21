@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private HomeTab homeTab;
     private SettingsTab settingsTab;
+    private ProfileTab profileTab;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
                     loadFragment(homeTab);
                     return true;
                 case R.id.navigation_profile:
+                    loadFragment(profileTab);
                     return true;
                 case R.id.navigation_settings:
                     loadFragment(settingsTab);
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         homeTab = new HomeTab();
         settingsTab = new SettingsTab();
+        profileTab = new ProfileTab();
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
