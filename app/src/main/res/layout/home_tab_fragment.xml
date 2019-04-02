@@ -1,11 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_tab_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeTab">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/navigation_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:alpha="0.8"
+        android:enabled="false"
+        android:focusable="false"
+
+        android:src="@drawable/ic_notifications_black_24dp"
+        android:visibility="gone"
+        mapbox:backgroundTint="@color/cardview_dark_background"
+        mapbox:layout_constraintBottom_toBottomOf="@+id/location_button"
+        mapbox:layout_constraintEnd_toStartOf="@+id/location_button" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/location_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:alpha="0.8"
+        android:clickable="true"
+        android:src="@android:drawable/ic_menu_mylocation"
+        mapbox:backgroundTint="@color/cardview_dark_background"
+        mapbox:layout_constraintBottom_toBottomOf="parent"
+        mapbox:layout_constraintEnd_toEndOf="parent" />
+
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
@@ -13,10 +44,5 @@
         mapbox:mapbox_cameraTargetLat="40.73581"
         mapbox:mapbox_cameraTargetLng="-73.99155"
         mapbox:mapbox_cameraZoom="11" />
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Navigate" />
 
 </FrameLayout>
