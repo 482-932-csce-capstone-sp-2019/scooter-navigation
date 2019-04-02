@@ -55,6 +55,18 @@ void loop() {
   if (Serial.available() > 0){  //checks if there are characters to read in receive  buffer
     state = Serial.read(); //gets character from buffer
 
+    //===============TEST===============//
+    if (state == 'f' || state == 'F') {
+      signalRight(lowIntensity,lowNumMotors);
+      digitalWrite(4,HIGH);
+      delay(250);
+      digitalWrite(4,LOW);
+      delay(250);
+      digitalWrite(4,HIGH);
+      delay(250);
+      digitalWrite(4,LOW);
+    }
+    
     //===============RIGHT===============//
     //low
     if (state == '0') {
