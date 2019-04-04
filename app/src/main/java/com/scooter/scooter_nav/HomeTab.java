@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 
 import android.graphics.BitmapFactory;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -116,6 +117,7 @@ public class HomeTab extends Fragment implements OnMapReadyCallback, Permissions
         return new HomeTab();
     }
 
+    @SuppressWarnings( {"MissingPermission"})
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -131,7 +133,6 @@ public class HomeTab extends Fragment implements OnMapReadyCallback, Permissions
         mapView.getMapAsync(this);
 
         lm = (LocationManager)this.getContext().getSystemService(Context.LOCATION_SERVICE);
-
 
         locationButton = rootView.findViewById(R.id.location_button);
         navigationButton = rootView.findViewById(R.id.navigation_button);
@@ -186,12 +187,27 @@ public class HomeTab extends Fragment implements OnMapReadyCallback, Permissions
         if (PermissionsManager.areLocationPermissionsGranted(getContext())) {
             mapboxMap.addOnMapClickListener(this);
 
+            //TODO find out if GPS works or if the provider screws up
             lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, this);
 
-            currentLocation = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            //update initial location based on  all providers
+            List<String> providers = lm.getProviders(true);
+            for (String provider : providers) {
+                Location l = lm.getLastKnownLocation(provider);
+
+                if (l == null) {
+                    continue;
+                }
+                if (currentLocation == null
+                        || l.getAccuracy() < currentLocation.getAccuracy()) {
+                    currentLocation = l;
+                }
+            }
+
 
             // Get an instance of the component
             LocationComponent locationComponent = mapboxMap.getLocationComponent();
+
             // Activate with options
             locationComponent.activateLocationComponent(getContext(), loadedMapStyle);
 
