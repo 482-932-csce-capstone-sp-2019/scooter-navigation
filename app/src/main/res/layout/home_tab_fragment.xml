@@ -8,34 +8,33 @@
     tools:context=".HomeTab">
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/navigation_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:alpha="0.8"
-        android:enabled="false"
-        android:focusable="false"
-
-        android:src="@drawable/ic_notifications_black_24dp"
-        android:visibility="gone"
-        mapbox:backgroundTint="@color/cardview_dark_background"
-        mapbox:layout_constraintBottom_toBottomOf="@+id/location_button"
-        mapbox:layout_constraintEnd_toStartOf="@+id/location_button" />
-
-    <android.support.design.widget.FloatingActionButton
         android:id="@+id/location_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
         android:alpha="0.8"
         android:clickable="true"
         android:src="@android:drawable/ic_menu_mylocation"
         mapbox:backgroundTint="@color/cardview_dark_background"
         mapbox:layout_constraintBottom_toBottomOf="parent"
         mapbox:layout_constraintEnd_toEndOf="parent" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/navigation_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="64dp"
+        android:layout_marginEnd="16dp"
+        android:alpha="0.8"
+        android:enabled="false"
+
+        android:focusable="false"
+        android:src="@drawable/ic_wrong_directions"
+        android:visibility="gone"
+        mapbox:backgroundTint="@color/cardview_dark_background"
+        mapbox:layout_constraintBottom_toBottomOf="@id/location_button"
+        mapbox:layout_constraintEnd_toStartOf="@+id/location_button" />
 
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapView"
