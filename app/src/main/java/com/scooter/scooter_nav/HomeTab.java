@@ -3,6 +3,7 @@ package com.scooter.scooter_nav;
 import android.Manifest;
 import android.content.Context;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.location.Criteria;
 import android.location.Location;
@@ -137,13 +138,14 @@ public class HomeTab extends Fragment implements OnMapReadyCallback, Permissions
         locationButton = rootView.findViewById(R.id.location_button);
         navigationButton = rootView.findViewById(R.id.navigation_button);
         navigationButton.setEnabled(false);
-//        navigationButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getActivity(), NavigationActivity.class);
-//                intent.putExtra(Utils.ROUTE_ARGUMENT, currentRoute);
-//                startActivity(intent);
-//            }
-//        });
+        navigationButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), NavigationActivity.class);
+                intent.putExtra(Utils.ROUTE_ARGUMENT, currentRoute);
+                startActivity(intent);
+                Log.d(Utils.TAG, "navigationButton::onClick: ");
+            }
+        });
 
         if (wayPoints == null) {
             wayPoints = new ArrayList<>();
@@ -489,7 +491,8 @@ public class HomeTab extends Fragment implements OnMapReadyCallback, Permissions
                         // enable the navigation button
                         navigationButton.setEnabled(true);
                         navigationButton.setFocusable(true);
-                        //navigationButton.setVisibility(View.VISIBLE);
+                        navigationButton.setVisibility(View.VISIBLE);
+
 
                         // zoom the camera to the route
                         ArrayList<LatLng> points = new ArrayList<>();
