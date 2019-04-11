@@ -5,6 +5,8 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/AppTheme"
+
     tools:context=".MainActivity">
 
     <android.support.design.widget.BottomNavigationView

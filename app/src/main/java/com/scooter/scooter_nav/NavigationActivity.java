@@ -169,13 +169,13 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
 
     private void sendToArduino(int command) {
         Log.i(Utils.TAG, "command");
-//        if (SettingsTab.mChatService != null) {
-//            byte[] out = {(byte)command};
-//            SettingsTab.mChatService.write(out);
-//        }
-//        else {
-//            Log.e(Utils.TAG, "sendToArduino: app not connected to Arduino");
-//        }
+        if (SettingsTab.mChatService != null) {
+            byte[] out = {(byte)command};
+            SettingsTab.mChatService.write(out);
+        }
+        else {
+            Log.e(Utils.TAG, "sendToArduino: app not connected to Arduino");
+        }
     }
 
 
