@@ -122,7 +122,7 @@ void loop() {
   //===============BUZZ================//
   //buzz on
   if (state == 'B') {
-      buzz(1);
+      buzz(255);
       Serial.println("Buzz");
     }
 

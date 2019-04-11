@@ -133,7 +133,7 @@ void remount(){
 }
 
 void buzz(int power){
-  digitalWrite(INSIDE,highIntensity);
-  digitalWrite(MIDDLE,highIntensity);
-  digitalWrite(OUTSIDE,highIntensity);
+  analogWrite(INSIDE,power);
+  analogWrite(MIDDLE,power);
+  analogWrite(OUTSIDE,power);
 }
