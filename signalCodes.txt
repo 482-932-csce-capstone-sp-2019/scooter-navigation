@@ -16,3 +16,13 @@ UTURN
 2 - lowest intensity
 u - medium intensity
 U - highest intensity
+
+DISMOUNT
+D - dismount signal
+
+REMOUNT
+E - reverse dismount signal
+
+BUZZ
+B - vibrate all motors
+b - stop vibrate all motors

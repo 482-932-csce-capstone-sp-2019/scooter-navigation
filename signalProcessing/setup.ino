@@ -1,10 +1,10 @@
 // the setup function runs once when you press reset or power the board
-void setup() 
-{
+
+void setup() {
   //vibration motors
-  pinMode(A0,OUTPUT);
-  pinMode(A1,OUTPUT);
   pinMode(A2,OUTPUT);
+  pinMode(A3,OUTPUT);
+  pinMode(A4,OUTPUT);
   //bluetooth LED
   //pinMode(2,OUTPUT);
   //low battery LED
