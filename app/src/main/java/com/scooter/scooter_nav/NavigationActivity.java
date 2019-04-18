@@ -1,14 +1,12 @@
 package com.scooter.scooter_nav;
 
 import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
-import com.mapbox.api.directions.v5.models.DirectionsResponse;
 import com.mapbox.api.directions.v5.models.DirectionsRoute;
 import com.mapbox.api.directions.v5.models.StepManeuver;
 import com.mapbox.geojson.Point;
@@ -78,7 +76,7 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
                 .milestones(milestones)
                 .build();
         navigationView.startNavigation(options);
-        //sendToArduino(Constants.ROUTE_START);
+        sendToArduino(Constants.ROUTE_START);
     }
 
     @Override
@@ -171,6 +169,8 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
         Log.i(Utils.TAG, "command");
         if (SettingsTab.mChatService != null) {
             byte[] out = {(byte)command};
+            Log.e(Utils.TAG, "sendToArduino:  Arduino"+command);
+
             SettingsTab.mChatService.write(out);
         }
         else {

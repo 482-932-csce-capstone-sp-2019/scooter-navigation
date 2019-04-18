@@ -45,6 +45,7 @@ dependencies {
     implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.34.0'
     implementation 'com.google.android.libraries.places:places:1.0.0'
     implementation 'com.google.android.gms:play-services-location:16.0.0'
+//    implementation group: 'androidx.preference', name: 'preference', version: '1.0.0-alpha1'
 
 }
 

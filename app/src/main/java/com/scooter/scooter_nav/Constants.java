@@ -15,15 +15,15 @@ public interface Constants {
 
     // Message constants to send to bluetooth
     // variables for bluetooth
-    public static final char RIGHT_TURN = '0';
-    public static final char LEFT_TURN = '1';
-    public static final char RIGHT_TURN_APPROACHING = '2';
-    public static final char LEFT_TURN_APPROACHING = '3';
-    public static final char CONTINUE = '4';
-    public static final char ARRIVAL = '5';
-    public static final char UTURN = '6';
-    public static final char CONNECTED = '7';
-    public static final char LOW_POWER = '8';
-    public static final char HIGH_POWER = '9';
-    public static final char ROUTE_START = 'b';
+    public static final char RIGHT_TURN = 'R';
+    public static final char LEFT_TURN = 'L';
+    public static final char RIGHT_TURN_APPROACHING = 'r';
+    public static final char LEFT_TURN_APPROACHING = 'l';
+    public static final char CONTINUE = '4'; // we dont have one yet
+    public static final char ARRIVAL = '5'; // same
+    public static final char UTURN = 'U';
+    public static final char CONNECTED = '7'; //same
+    public static final char LOW_POWER = '8'; //add
+    public static final char HIGH_POWER = '9'; //add
+    public static final char ROUTE_START = 'b'; //add
 }

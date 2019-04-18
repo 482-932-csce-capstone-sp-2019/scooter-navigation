@@ -1,44 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:theme="@style/AppTheme"
-
-
     android:layout_height="wrap_content">
-
-    <PreferenceCategory
+    <android.support.v7.preference.PreferenceCategory
         android:title="Connectivity"
-        android:theme="@style/AppTheme">
-        <PreferenceScreen
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.preference.PreferenceScreen
             android:key="bluetooth_screen"
             android:title="Bluetooth"
-            android:persistent="false">
+            android:persistent="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        </PreferenceScreen>
+        </android.support.v7.preference.PreferenceScreen>
         <Preference android:key="bluetooth_test"
             android:title="Send Bluetooth Test String"
-            android:persistent="false"></Preference>
-    </PreferenceCategory>
-    <PreferenceCategory android:title="Device">
-        <com.scooter.scooter_nav.SeekBarPreference android:title="Vibration Strength" android:enabled="false"></com.scooter.scooter_nav.SeekBarPreference>
-        <com.scooter.scooter_nav.SeekBarPreference android:title="Vibration Strength" android:enabled="false"></com.scooter.scooter_nav.SeekBarPreference>
+            android:persistent="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></Preference>
+    </android.support.v7.preference.PreferenceCategory>
+    <android.support.v7.preference.PreferenceCategory android:title="Device"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.scooter.scooter_nav.SeekBarPreference android:title="Vibration Strength" android:enabled="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></com.scooter.scooter_nav.SeekBarPreference>
 
-    </PreferenceCategory>
+    </android.support.v7.preference.PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="Navigation Options">
-        <SwitchPreference
+    <android.support.v7.preference.PreferenceCategory
+        android:title="Navigation Options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <SwitchPreferenceCompat
             android:key="simulate_route"
-            android:title="Simulate route"/>
+            android:title="Simulate route"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <EditTextPreference
             android:key="turn_approaching_distance"
             android:title="Turn approaching distance (meters)"
             android:inputType="number"
-            android:defaultValue="150"/>
+            android:defaultValue="150"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <EditTextPreference
             android:key="turn_now_distance"
             android:title="Turn now distance (meters)"
             android:inputType="number"
-            android:defaultValue="10" />
-    </PreferenceCategory>
+            android:defaultValue="10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </android.support.v7.preference.PreferenceCategory>
 </PreferenceScreen>

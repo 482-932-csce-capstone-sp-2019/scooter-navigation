@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                     loadFragment(profileTab);
                     return true;
                 case R.id.navigation_settings:
-                    loadSetings(settingsTab);
+                    loadFragment(settingsTab);
                     return true;
             }
             return false;
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public void loadSetings(PreferenceFragmentCompat fragment){
+    public void loadSettings(PreferenceFragmentCompat fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
