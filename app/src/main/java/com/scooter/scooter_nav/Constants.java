@@ -17,8 +17,8 @@ public interface Constants {
     // variables for bluetooth
     public static final char RIGHT_TURN = 'R';
     public static final char LEFT_TURN = 'L';
-    public static final char RIGHT_TURN_APPROACHING = 'r';
-    public static final char LEFT_TURN_APPROACHING = 'l';
+    public static final char RIGHT_TURN_APPROACHING = 'R';
+    public static final char LEFT_TURN_APPROACHING = 'L';
     public static final char CONTINUE = '4'; // we dont have one yet
     public static final char ARRIVAL = '5'; // same
     public static final char UTURN = 'U';

@@ -171,7 +171,10 @@ public class NavigationActivity extends AppCompatActivity implements OnNavigatio
             byte[] out = {(byte)command};
             Log.e(Utils.TAG, "sendToArduino:  Arduino"+command);
 
-            SettingsTab.mChatService.write(out);
+            for(BluetoothService bs : SettingsTab.mChatService){
+                bs.write(out);
+
+            }
         }
         else {
             Log.e(Utils.TAG, "sendToArduino: app not connected to Arduino");

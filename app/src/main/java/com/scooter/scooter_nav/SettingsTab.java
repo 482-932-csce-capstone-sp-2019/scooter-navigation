@@ -23,6 +23,7 @@ import android.text.InputType;
 import android.util.Log;
 import android.widget.EditText;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -32,12 +33,13 @@ public class SettingsTab extends PreferenceFragmentCompat implements Handler.Cal
     BluetoothAdapter adapter;
     BluetoothSocket bt_socket;
     public Handler bh;
-    public static BluetoothService mChatService;
+    public static ArrayList<BluetoothService> mChatService;
 
     @SuppressWarnings("ResourceType")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mChatService = new ArrayList<>();
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.layout.settings_tab_fragment);
         bh = new Handler(this);
@@ -77,7 +79,10 @@ public class SettingsTab extends PreferenceFragmentCompat implements Handler.Cal
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mChatService.write(input.getText().toString().getBytes());
+                        for(BluetoothService bs : mChatService){
+                            bs.write(input.getText().toString().getBytes());
+
+                        }
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -231,7 +236,7 @@ public class SettingsTab extends PreferenceFragmentCompat implements Handler.Cal
             }
             for (int i = 0; i < uuids.length; i++)
             {
-                if (uuids[i].getUuid().toString().equals("00001101-0000-1000-8000-00805f9b34fb")) {
+                //if (uuids[i].getUuid().toString().equals("00001101-0000-1000-8000-00805f9b34fb")) {
 
                     // initialize chat service
                     PreferenceScreen devices_screen = (PreferenceScreen) ((PreferenceCategory) getPreferenceScreen().getPreference(0)).getPreference(0);
@@ -241,11 +246,12 @@ public class SettingsTab extends PreferenceFragmentCompat implements Handler.Cal
                     preference.setKey(deviceHardwareAddress);
                     devices_screen.addPreference(preference);
                     BluetoothDevice selected_device = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(preference.getTitle().toString().split("\n")[1]);
-                    if (mChatService == null)
-                    {
-                        mChatService = new BluetoothService(getActivity(), bh);
-                    }
-                    mChatService.connect(selected_device,true);
+                   // if (mChatService == null)
+                    //{
+                    BluetoothService bs = new BluetoothService(getActivity(), bh);
+                    //}
+                    bs.connect(selected_device,true);
+                    mChatService.add(bs);
                     //PreferenceScreen devices_screen = (PreferenceScreen) ((PreferenceCategory) getPreferenceScreen().getPreference(0)).getPreference(0);
                     for (int j = 0; j < devices_screen.getPreferenceCount(); j++)
                     {
@@ -255,7 +261,7 @@ public class SettingsTab extends PreferenceFragmentCompat implements Handler.Cal
                         }
                     }
                     preference.setSummary("Connecting...");
-                    preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                    /*preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                         @Override
                         public boolean onPreferenceClick(Preference preference) {
                             BluetoothDevice selected_device = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(preference.getTitle().toString().split("\n")[1]);
@@ -275,8 +281,8 @@ public class SettingsTab extends PreferenceFragmentCompat implements Handler.Cal
                             preference.setSummary("Connecting...");
                             return true;
                         }
-                    });
-                }
+                    });*/
+                //}
             }
         }
     }

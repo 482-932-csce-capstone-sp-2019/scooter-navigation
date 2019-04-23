@@ -61,7 +61,10 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
         {
             command = "a";
         }
-        SettingsTab.mChatService.write(command.getBytes());
+        for(BluetoothService bs : SettingsTab.mChatService){
+            bs.write(command.getBytes());
+        }
+
         setValue(progress);
     }
 
